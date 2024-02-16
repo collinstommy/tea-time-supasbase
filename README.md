@@ -1,4 +1,4 @@
-Prerequisites
+## Prerequisites
 - sqlc
 - air
 - npm
