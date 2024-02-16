@@ -1,0 +1,16 @@
+package components
+
+import "tea-time/db"
+
+templ Index(playlists []db.Playlist) {
+	@DocType()
+	@Head()
+	@Body(pageIndex(playlists))
+}
+
+templ pageIndex(playlists []db.Playlist) {
+	<body>
+		@AllPlaylists(playlists)
+		@PlaylistForm()
+	</body>
+}

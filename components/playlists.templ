@@ -1,0 +1,36 @@
+package components
+
+import "tea-time/db"
+import "strconv"
+
+templ AllPlaylists(playlists []db.Playlist) {
+	<table>
+		<thead>
+			<tr>
+				<th>Spotify ID</th>
+				<th>Spotify ID</th>
+				<th>Spotify ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			for _, playlist := range playlists {
+				@SinglePlaylist(playlist)
+			}
+		</tbody>
+	</table>
+}
+
+templ SinglePlaylist(playlist db.Playlist) {
+	<tr>
+		<td>{ playlist.Name }</td>
+		<td>{ playlist.Artists }</td>
+		<td>{ strconv.Itoa(playlist.TrackCount) }</td>
+	</tr>
+}
+
+templ PlaylistForm() {
+	<form action="/playlist" hx-post="/playlists">
+		<input type="text" name="spotifyId" placeholder="spotifyId"/>
+		<input type="submit" value="Add Playlist"/>
+	</form>
+}
